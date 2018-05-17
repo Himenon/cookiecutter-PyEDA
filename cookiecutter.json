@@ -1,0 +1,6 @@
+{
+    "project_name": "PyEDA",
+    "python_version": "3.6",
+    "broker": ["redis", "rabbitmq"],
+    "store": ["mongodb", "mysql", "mariadb", "postgres"]
+}

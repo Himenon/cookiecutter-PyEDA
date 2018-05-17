@@ -1,0 +1,40 @@
+version: '2.1'
+
+services:
+  store:
+    build:
+      context: ./store
+
+  broker:
+    build:
+      context: ./broker
+
+  worker:
+    build:
+      context: ./worker
+    links:
+      - store
+      - broker
+    depends_on:
+      - store
+      - broker
+
+  server:
+    build:
+      context: ./server
+    links:
+      - store
+      - broker
+    depends_on:
+      - store
+      - broker
+
+  scheduler:
+    build:
+      context: ./scheduler
+    links:
+      - worker
+      - broker
+    depends_on:
+      - worker
+      - broker
